@@ -6,7 +6,7 @@ npm project dependencies, call from project folder
 * npm install
 within the project folder
 * npm start
-sudo sysctl -w fs.inotify.max_user_watches=100000
+* sudo sysctl -w fs.inotify.max_user_watches=100000
 
 
 
