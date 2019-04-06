@@ -5,20 +5,29 @@ import { Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { fetchTasks, fetchComments } from '../redux/ActionCreators';
 
+// rewards stuff
+import { fetchRewards } from '../redux/ActionCreators';
+
 import Tasks from './TasksComponent';
+import Rewards from './RewardsComponent';
+
 import Home from './HomeComponent';
+
 import TaskDetails from './TaskDetailsComponent';
+import RewardDetails from './RewardDetailsComponent';
 
 const mapStateToProps = state => {
   return {
-    tasks: state.tasks
+    tasks: state.tasks,
+    rewards: state.rewards
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     fetchTasks: () => dispatch(fetchTasks()),
-    fetchComments: () => dispatch(fetchComments())
+    fetchComments: () => dispatch(fetchComments()),
+    fetchRewards: () => dispatch(fetchRewards())
   };
 }
 
@@ -75,6 +84,29 @@ const TasksNavigator = createStackNavigator({
   }
 );
 
+const RewardsNavigator = createStackNavigator({
+  Rewards: {
+    screen: Rewards,
+    navigationOptions: ({ navigation }) => ({
+      headerLeft: <Icon name='menu' size={24} color='white' onPress={() => navigation.toggleDrawer()} />
+    })
+  },
+  RewardDetails: { screen: RewardDetails }
+},
+  {
+    initialRouteName: 'Rewards',
+    navigationOptions: ({ navigation }) => ({
+      headerStyle: {
+        backgroundColor: '#512DA8'
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        color: '#fff'
+      }
+    })
+  }
+);
+
 const MainNavigator = createDrawerNavigator({
   Home: {
     screen: HomeNavigator,
@@ -94,6 +126,14 @@ const MainNavigator = createDrawerNavigator({
       drawerIcon: ({ tintColor, focused }) => (
         <Icon name='list' type='font-awesome' size={24} color={tintColor} />
       )
+    },
+    screen: RewardsNavigator,
+    navigationOptions: {
+      title: 'Rewards',
+      drawerLabel: 'Rewards',
+      drawerIcon: ({ tintColor, focused }) => (
+        <Icon name='trophy' type='font-awesome' size={24} color={tintColor} />
+      )
     }
   }
 },
@@ -108,6 +148,7 @@ class Main extends Component {
   componentDidMount() {
     this.props.fetchTasks();
     this.props.fetchComments();
+    this.props.fetchRewards();
   }
 
   render() {

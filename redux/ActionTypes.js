@@ -2,6 +2,13 @@ export const TASKS_LOADING = 'TASKS_LOADING';
 export const ADD_TASKS = 'ADD_TASKS';
 export const TASKS_FAILED = 'TASKS_FAILED';
 
+
+// REWARDS
+export const REWARDS_LOADING = 'REWARDS_LOADING';
+export const ADD_REWARDS = 'ADD_REWARDS';
+export const REWARDS_FAILED = 'REWARDS_FAILED';
+// REWARDS
+
 export const POST_FAVORITE = 'POST_FAVORITE';
 export const ADD_FAVORITE = 'ADD_FAVORITE';
 

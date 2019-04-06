@@ -15,6 +15,22 @@
       "description": "blabla"
     }
   ],
+  "rewards": [
+    {
+      "id": 0,
+      "name": "Prepare CV",
+      "image": "images/dummy.png",
+      "category": "job",
+      "description": "blabla"
+    },
+    {
+      "id": 1,
+      "name": "File taxes",
+      "image": "images/dummy.png",
+      "category": "admin",
+      "description": "blabla"
+    }
+  ],
   "comments": [
     {
       "id": 0,

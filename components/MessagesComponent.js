@@ -11,7 +11,6 @@ const mapStateToProps = state => {
 
 class Messages extends React.Component {
 
-
     render() {
         const renderMessage = ({ item, index }) => {
             return (
