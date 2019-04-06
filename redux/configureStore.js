@@ -5,6 +5,7 @@ import { tasks } from './tasks';
 import { rewards } from './rewards'
 import { comments } from './comments';
 import { favorites } from './favorites';
+import { messages } from './messages';
 
 export const ConfigureStore = () => {
     const store = createStore(
@@ -12,7 +13,8 @@ export const ConfigureStore = () => {
             tasks,
             rewards,
             comments,
-            favorites
+            favorites,
+            messages
         }),
         applyMiddleware(thunk, logger)
     );

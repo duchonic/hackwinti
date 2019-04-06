@@ -3,7 +3,7 @@ import { ScrollView, View, Platform, Image, StyleSheet, Text } from 'react-nativ
 import { createStackNavigator, createDrawerNavigator, DrawerItems, SafeAreaView } from 'react-navigation';
 import { Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
-import { fetchTasks, fetchComments } from '../redux/ActionCreators';
+import { fetchTasks, fetchComments, fetchMessages } from '../redux/ActionCreators';
 
 // rewards stuff
 import { fetchRewards } from '../redux/ActionCreators';
@@ -12,7 +12,8 @@ import Tasks from './TasksComponent';
 import Rewards from './RewardsComponent';
 
 import Home from './HomeComponent';
-
+import Messages from './MessagesComponent';
+>>>>>>> 065ca928e519f8d7d4f8044b54eab0ff1c1d326b
 import TaskDetails from './TaskDetailsComponent';
 import RewardDetails from './RewardDetailsComponent';
 
@@ -28,6 +29,7 @@ const mapDispatchToProps = dispatch => {
     fetchTasks: () => dispatch(fetchTasks()),
     fetchComments: () => dispatch(fetchComments()),
     fetchRewards: () => dispatch(fetchRewards())
+    fetchMessages: () => dispatch(fetchMessages())
   };
 }
 
@@ -42,6 +44,23 @@ const CustomDrawerContentComponent = (props) => (
       <DrawerItems {...props} />
     </SafeAreaView>
   </ScrollView>
+);
+
+const MessagesNavigator = createStackNavigator({
+  Messages: { screen: Messages }
+},
+  {
+    navigationOptions: ({ navigation }) => ({
+      headerStyle: {
+        backgroundColor: '#512DA8'
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        color: '#fff'
+      },
+      headerLeft: <Icon name='menu' size={24} color='white' onPress={() => navigation.toggleDrawer()} />
+    })
+  }
 );
 
 const HomeNavigator = createStackNavigator({
@@ -65,7 +84,7 @@ const TasksNavigator = createStackNavigator({
   Tasks: {
     screen: Tasks,
     navigationOptions: ({ navigation }) => ({
-      headerLeft: <Icon name='tasks' size={24} color='white' onPress={() => navigation.toggleDrawer()} />
+      headerLeft: <Icon name='menu' size={24} color='white' onPress={() => navigation.toggleDrawer()} />
     })
   },
   TaskDetails: { screen: TaskDetails }
@@ -108,6 +127,16 @@ const RewardsNavigator = createStackNavigator({
 );
 
 const MainNavigator = createDrawerNavigator({
+  Messages: {
+    screen: MessagesNavigator,
+    navigationOptions: {
+      title: 'Messages',
+      drawerLabel: 'Messages',
+      drawerIcon: ({ tintColor, focused }) => (
+        <Icon name='comments' type='font-awesome' size={24} color={tintColor} />
+      )
+    }
+  },
   Home: {
     screen: HomeNavigator,
     navigationOptions: {
@@ -118,7 +147,7 @@ const MainNavigator = createDrawerNavigator({
       )
     }
   },
-  Menu: {
+  Tasks: {
     screen: TasksNavigator,
     navigationOptions: {
       title: 'Tasks',
@@ -149,6 +178,7 @@ class Main extends Component {
     this.props.fetchTasks();
     this.props.fetchComments();
     this.props.fetchRewards();
+    this.props.fetchMessages();
   }
 
   render() {
