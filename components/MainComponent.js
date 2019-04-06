@@ -8,6 +8,8 @@ import { fetchTasks, fetchComments } from '../redux/ActionCreators';
 import Tasks from './TasksComponent';
 import Home from './HomeComponent';
 import TaskDetails from './TaskDetailsComponent';
+import Appointments from './AppointmentsComponent';
+import AppointmentDetails from './AppointmentDetailsComponent';
 
 const mapStateToProps = state => {
   return {
@@ -18,7 +20,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchTasks: () => dispatch(fetchTasks()),
-    fetchComments: () => dispatch(fetchComments())
+    fetchComments: () => dispatch(fetchComments()),
+    fetchAppointments: () => dispatch(fetchAppointments())
   };
 }
 
@@ -63,6 +66,29 @@ const TasksNavigator = createStackNavigator({
 },
   {
     initialRouteName: 'Tasks',
+    navigationOptions: ({ navigation }) => ({
+      headerStyle: {
+        backgroundColor: '#512DA8'
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        color: '#fff'
+      }
+    })
+  }
+);
+
+const AppointmentNavigator = createStackNavigator({
+  Appointments: {
+    screen: Appointments,
+    navigationOptions: ({ navigation }) => ({
+      headerLeft: <Icon name='tasks' size={24} color='white' onPress={() => navigation.toggleDrawer()} />
+    })
+  },
+  AppointmentDetails: { screen: AppointmentDetails }
+},
+  {
+    initialRouteName: 'Appointment',
     navigationOptions: ({ navigation }) => ({
       headerStyle: {
         backgroundColor: '#512DA8'
