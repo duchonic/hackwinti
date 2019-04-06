@@ -21,7 +21,7 @@ class Home extends React.Component {
     render() {
         return (
             <ScrollView>
-                <Text style={styles.header}>Stadt Winterthur</Text>
+                <Image source={require('./images/logoWintiFull.png')}/>
                 <Text style={styles.body}>Social Services App</Text>
                 <Icon name='smile-o' type='font-awesome' size={280} color={'yellow'} />
             </ScrollView>
@@ -45,6 +45,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         textAlign: 'center',
         justifyContent: 'center',
+        paddingTop: 40,
         paddingBottom: 40
     }
 });

@@ -54,7 +54,7 @@ const MessagesNavigator = createStackNavigator({
   {
     navigationOptions: ({ navigation }) => ({
       headerStyle: {
-        backgroundColor: '#512DA8'
+        backgroundColor: '#3366cc'
       },
       headerTintColor: '#fff',
       headerTitleStyle: {
@@ -71,7 +71,7 @@ const HomeNavigator = createStackNavigator({
   {
     navigationOptions: ({ navigation }) => ({
       headerStyle: {
-        backgroundColor: '#512DA8'
+        backgroundColor: '#3366cc'
       },
       headerTintColor: '#fff',
       headerTitleStyle: {
@@ -95,7 +95,7 @@ const TasksNavigator = createStackNavigator({
     initialRouteName: 'Tasks',
     navigationOptions: ({ navigation }) => ({
       headerStyle: {
-        backgroundColor: '#512DA8'
+        backgroundColor: '#3366cc'
       },
       headerTintColor: '#fff',
       headerTitleStyle: {
@@ -118,7 +118,7 @@ const AppointmentsNavigator = createStackNavigator({
     initialRouteName: 'Appointments',
     navigationOptions: ({ navigation }) => ({
       headerStyle: {
-        backgroundColor: '#512DA8'
+        backgroundColor: '#3366cc'
       },
       headerTintColor: '#fff',
       headerTitleStyle: {
@@ -141,7 +141,7 @@ const RewardsNavigator = createStackNavigator({
     initialRouteName: 'Rewards',
     navigationOptions: ({ navigation }) => ({
       headerStyle: {
-        backgroundColor: '#512DA8'
+        backgroundColor: '#3366cc'
       },
       headerTintColor: '#fff',
       headerTitleStyle: {
@@ -204,7 +204,7 @@ const MainNavigator = createDrawerNavigator({
   },
 },
   {
-    drawerBackgroundColor: '#D1C4E9',
+    drawerBackgroundColor: '#fff',
     contentComponent: CustomDrawerContentComponent
   });
 
@@ -234,7 +234,7 @@ const styles = StyleSheet.create({
     flex: 1
   },
   drawerHeader: {
-    backgroundColor: '#512DA8',
+    backgroundColor: '#3366cc',
     height: 140,
     alignItems: 'center',
     justifyContent: 'center',

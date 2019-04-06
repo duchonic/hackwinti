@@ -44,12 +44,12 @@ class Tasks extends React.Component {
 
             return (
                 <ListItem
-                    containerStyle={{backgroundColor: (now > dueDate ? 'red': 'green')}}
                     key={index}
                     subtitle={'Due: ' + new Date(Date.parse(item.dueDate)).toLocaleString("de") + '\nDays left: ' + Math.round((dueDate - now)/24/3600000)}
                     title={item.name}
                     onPress={() => navigate('TaskDetails', {taskId: item.id})}
-                    leftIcon={<Icon name={item.category} type='font-awesome'/>}
+                    leftIcon={<Icon name={item.category} type='font-awesome' size={30}/>}
+                    rightIcon={<Icon name={now > dueDate ? 'frown-o' : 'smile-o' } type='font-awesome' color={(now > dueDate ? 'red': 'green')} size={40}/>}
                     bottomDivider
                     topDivider
                 />
