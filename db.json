@@ -33,5 +33,21 @@
       "author": "Social Worker B",
       "date": "2019-10-16T13:27:13Z"
     }
+  ],
+  "appointments":[
+    {
+      "id": 0,
+      "title": "Appointment with Company XY",
+      "date": "2019-01-21T16:27:12Z",
+      "location": "Technoparkstrasse 2",
+      "preReminder": "10min"
+    },
+    {
+      "id": 1,
+      "title": "Appointment with social Help",
+      "date": "2019-01-21T16:27:12Z",
+      "location": "Technoparkstrasse 2",
+      "preReminder": "10min"
+    }
   ]
 }
