@@ -3,17 +3,25 @@ import { ScrollView, View, Platform, Image, StyleSheet, Text } from 'react-nativ
 import { createStackNavigator, createDrawerNavigator, DrawerItems, SafeAreaView } from 'react-navigation';
 import { Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
-import { fetchTasks, fetchComments } from '../redux/ActionCreators';
+import { fetchTasks, fetchComments, fetchMessages } from '../redux/ActionCreators';
+
+// rewards stuff
+import { fetchRewards } from '../redux/ActionCreators';
 
 import Tasks from './TasksComponent';
+import Rewards from './RewardsComponent';
+
 import Home from './HomeComponent';
+import Messages from './MessagesComponent';
 import TaskDetails from './TaskDetailsComponent';
 import Appointments from './AppointmentsComponent';
 import AppointmentDetails from './AppointmentDetailsComponent';
+import RewardDetails from './RewardDetailsComponent';
 
 const mapStateToProps = state => {
   return {
-    tasks: state.tasks
+    tasks: state.tasks,
+    rewards: state.rewards
   };
 };
 
@@ -21,7 +29,9 @@ const mapDispatchToProps = dispatch => {
   return {
     fetchTasks: () => dispatch(fetchTasks()),
     fetchComments: () => dispatch(fetchComments()),
-    fetchAppointments: () => dispatch(fetchAppointments())
+    fetchAppointments: () => dispatch(fetchAppointments()),
+    fetchRewards: () => dispatch(fetchRewards()),
+    fetchMessages: () => dispatch(fetchMessages())
   };
 }
 
@@ -36,6 +46,23 @@ const CustomDrawerContentComponent = (props) => (
       <DrawerItems {...props} />
     </SafeAreaView>
   </ScrollView>
+);
+
+const MessagesNavigator = createStackNavigator({
+  Messages: { screen: Messages }
+},
+  {
+    navigationOptions: ({ navigation }) => ({
+      headerStyle: {
+        backgroundColor: '#512DA8'
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        color: '#fff'
+      },
+      headerLeft: <Icon name='menu' size={24} color='white' onPress={() => navigation.toggleDrawer()} />
+    })
+  }
 );
 
 const HomeNavigator = createStackNavigator({
@@ -59,7 +86,7 @@ const TasksNavigator = createStackNavigator({
   Tasks: {
     screen: Tasks,
     navigationOptions: ({ navigation }) => ({
-      headerLeft: <Icon name='tasks' size={24} color='white' onPress={() => navigation.toggleDrawer()} />
+      headerLeft: <Icon name='menu' size={24} color='white' onPress={() => navigation.toggleDrawer()} />
     })
   },
   TaskDetails: { screen: TaskDetails }
@@ -101,7 +128,40 @@ const AppointmentNavigator = createStackNavigator({
   }
 );
 
+const RewardsNavigator = createStackNavigator({
+  Rewards: {
+    screen: Rewards,
+    navigationOptions: ({ navigation }) => ({
+      headerLeft: <Icon name='menu' size={24} color='white' onPress={() => navigation.toggleDrawer()} />
+    })
+  },
+  RewardDetails: { screen: RewardDetails }
+},
+  {
+    initialRouteName: 'Rewards',
+    navigationOptions: ({ navigation }) => ({
+      headerStyle: {
+        backgroundColor: '#512DA8'
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        color: '#fff'
+      }
+    })
+  }
+);
+
 const MainNavigator = createDrawerNavigator({
+  Messages: {
+    screen: MessagesNavigator,
+    navigationOptions: {
+      title: 'Messages',
+      drawerLabel: 'Messages',
+      drawerIcon: ({ tintColor, focused }) => (
+        <Icon name='comments' type='font-awesome' size={24} color={tintColor} />
+      )
+    }
+  },
   Home: {
     screen: HomeNavigator,
     navigationOptions: {
@@ -112,13 +172,21 @@ const MainNavigator = createDrawerNavigator({
       )
     }
   },
-  Menu: {
+  Tasks: {
     screen: TasksNavigator,
     navigationOptions: {
       title: 'Tasks',
       drawerLabel: 'Tasks',
       drawerIcon: ({ tintColor, focused }) => (
         <Icon name='list' type='font-awesome' size={24} color={tintColor} />
+      )
+    },
+    screen: RewardsNavigator,
+    navigationOptions: {
+      title: 'Rewards',
+      drawerLabel: 'Rewards',
+      drawerIcon: ({ tintColor, focused }) => (
+        <Icon name='trophy' type='font-awesome' size={24} color={tintColor} />
       )
     }
   }
@@ -134,6 +202,8 @@ class Main extends Component {
   componentDidMount() {
     this.props.fetchTasks();
     this.props.fetchComments();
+    this.props.fetchRewards();
+    this.props.fetchMessages();
   }
 
   render() {

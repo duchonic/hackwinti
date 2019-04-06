@@ -3,11 +3,11 @@ import { Text, View, ScrollView, FlatList } from 'react-native';
 import { connect } from 'react-redux';
 import { baseUrl } from '../shared/baseUrl';
 import { Card, Icon } from 'react-native-elements';
-import { postTaskCompleted } from '../redux/ActionCreators';
+import { postRewardCompleted } from '../redux/ActionCreators';
 
 const mapStateToProps = state => {
     return {
-        tasks: state.tasks,
+        rewards: state.rewards,
         comments: state.comments,
         favorites: state.favorites
     }
@@ -15,7 +15,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        postTaskCompleted: taskId => dispatch(postTaskCompleted(taskId))
+        postRewardCompleted: rewardId => dispatch(postRewardCompleted(rewardId))
     }
 };
 
@@ -36,13 +36,13 @@ function RenderComments(props) {
         </Card>
     );
 }
-function RenderTask(props) {
-    const task = props.task;
+function RenderReward(props) {
+    const reward = props.reward;
 
-    if (task != null) {
+    if (reward != null) {
         return (
-            <Card featuredTitle={task.name} image={{ uri: baseUrl + task.image }} featuredSubtitle={task.dueDate}>
-                <Text style={{ margin: 10 }}>{task.description}</Text>
+            <Card featuredTitle={reward.name} image={{ uri: baseUrl + reward.image }}>
+                <Text style={{ margin: 10 }}>{reward.description}</Text>
                 <Icon raised reverse name={props.favorite ? 'heart' : 'heart-o'} type='font-awesome' color='#f50'
                     onPress={() => props.favorite ? console.log('Already favorite') : props.onPress()} />
             </Card>
@@ -53,23 +53,23 @@ function RenderTask(props) {
 }
 
 
-class TaskDetails extends React.Component {
+class RewardDetails extends React.Component {
     static navigationOptions = {
-        title: 'Task Details'
+        title: 'Reward Details'
     };
 
-    markFavorite(taskId) {
-        this.props.postTaskCompleted(taskId);
+    markFavorite(rewardId) {
+        this.props.postRewardCompleted(rewardId);
     }
 
     render() {
-        const taskId = this.props.navigation.getParam('taskId', '');
+        const rewardId = this.props.navigation.getParam('rewardId', '');
         return (
             <ScrollView>
-                <RenderTask task={this.props.tasks.tasks[+taskId]} favorite={this.props.favorites.some(el => el === taskId)} onPress={() => this.markFavorite(taskId)} />
-                <RenderComments comments={this.props.comments.comments.filter(comment => comment.taskId === taskId)} />
+                <RenderReward reward={this.props.rewards.rewards[+rewardId]} favorite={this.props.favorites.some(el => el === rewardId)} onPress={() => this.markFavorite(rewardId)} />
+                <RenderComments comments={this.props.comments.comments.filter(comment => comment.rewardId === rewardId)} />
             </ScrollView>
         );
     }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(TaskDetails);
+export default connect(mapStateToProps, mapDispatchToProps)(RewardDetails);

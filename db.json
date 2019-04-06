@@ -5,6 +5,24 @@
       "name": "Prepare CV",
       "image": "images/dummy.png",
       "category": "job",
+      "description": "blabla",
+      "dueDate": "2019-10-21T16:27:12Z"
+    },
+    {
+      "id": 1,
+      "name": "File taxes",
+      "image": "images/dummy.png",
+      "category": "admin",
+      "description": "blabla",
+      "dueDate": "2019-03-30T16:27:12Z"
+    }
+  ],
+  "rewards": [
+    {
+      "id": 0,
+      "name": "Prepare CV",
+      "image": "images/dummy.png",
+      "category": "job",
       "description": "blabla"
     },
     {
@@ -28,10 +46,33 @@
   "messages": [
     {
       "id": 0,
-      "title": "",
-      "message": "",
+      "message": "Hello World",
       "author": "Social Worker B",
       "date": "2019-10-16T13:27:13Z"
+    },
+    {
+      "message": "Blabla",
+      "author": "Client A",
+      "date": "2019-04-06T11:44:17.114Z",
+      "id": 1
+    },
+    {
+      "message": "Goodbye world",
+      "author": "Client A",
+      "date": "2019-04-06T12:01:59.629Z",
+      "id": 2
+    },
+    {
+      "message": "Blubber",
+      "author": "Client A",
+      "date": "2019-04-06T12:04:36.925Z",
+      "id": 3
+    },
+    {
+      "message": "Please review your CV",
+      "author": "Social Worker B",
+      "date": "2019-04-06T13:04:36.925Z",
+      "id": 4
     }
   ],
   "appointments":[

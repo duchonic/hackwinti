@@ -1,33 +1,59 @@
 import React from 'react';
 
-import {ScrollView, FlatList} from 'react-native';
-import { Tile } from 'react-native-elements';
+import {ScrollView, FlatList, StyleSheet, View, TextInput, Text} from 'react-native';
+import { Tile, Button, ListItem } from 'react-native-elements';
+import {connect} from 'react-redux';
+
+import {postMessage} from '../redux/ActionCreators';
+
 
 const mapStateToProps = state => {
     return {
         messages: state.messages
     };
 };
+const mapDispatchToProps = dispatch => {
+    return {
+        postMessage: messageText => dispatch(postMessage(messageText))
+    }
+};
 
 class Messages extends React.Component {
 
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            messageText: ''
+        };
+    }
+    static navigationOptions = {
+        title: 'Messages'
+    };
+
+    handlePost() {
+        this.setState({message: ''});
+        this.props.postMessage(this.state.messageText);
+    }
+
     render() {
         const renderMessage = ({ item, index }) => {
             return (
-                <Tile
+                <ListItem
                     key={index}
-                    title={item.title}
-                    caption={item.message}
-                    featured
+                    title={<View><Text>{item.author}</Text><Text>{item.date}</Text></View>}
+                    subtitle={item.message}
                 />
             );
         };
         return (
             <ScrollView>
                 <View style={styles.formRow}>
-                    <Text style={styles.formLabel}>Smoking?</Text>
-                    <Switch style={styles.formItem} value={this.state.smoking} trackColor='#512DA8' onValueChange={value => this.setState({ smoking: value })} />
+                    <TextInput style={styles.formItem}
+                        onChangeText={(messageText) => this.setState({messageText})}
+                        value={this.state.messageText}
+                    />
+                    <Button style={styles.formLabel} title='Send' onPress={() => this.handlePost()}/>
                 </View>
                 <FlatList
                     data={this.props.messages.messages}
@@ -38,3 +64,25 @@ class Messages extends React.Component {
         );
     }
 }
+
+
+const styles = StyleSheet.create({
+    formRow: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        flex: 1,
+        flexDirection: 'row',
+        margin: 20
+    },
+    formLabel: {
+        fontSize: 18,
+        flex: 2
+    },
+    formItem: {
+        flex: 1,
+        borderColor: 'gray',
+        borderWidth: 1
+    }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Messages);
