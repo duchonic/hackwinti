@@ -25,14 +25,16 @@
   "rewards": [
     {
       "id": 0,
-      "name": "Prepare CV",
+      "name": "Preformance",
+      "value": 25,
       "image": "images/dummy.png",
       "category": "job",
       "description": "blabla"
     },
     {
       "id": 1,
-      "name": "File taxes",
+      "name": "DaylyGoals",
+      "value": 75,
       "image": "images/dummy.png",
       "category": "admin",
       "description": "blabla"

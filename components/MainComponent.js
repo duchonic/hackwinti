@@ -18,6 +18,8 @@ import Appointments from './AppointmentsComponent';
 import AppointmentDetails from './AppointmentDetailsComponent';
 import RewardDetails from './RewardDetailsComponent';
 
+import BackEndManager from './BackEndManager';
+
 const mapStateToProps = state => {
   return {
     tasks: state.tasks,
@@ -209,6 +211,11 @@ const MainNavigator = createDrawerNavigator({
   });
 
 
+// const mBackEnd = new BackEndManager();
+// console.log('type: ' + mBackEnd);
+// taskPerDay();
+// console.log('get: ' + taskPerDay());
+// console.log('get: ' + performance());
 
 class Main extends Component {
   componentDidMount() {
