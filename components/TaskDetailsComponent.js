@@ -41,7 +41,7 @@ function RenderTask(props) {
 
     if (task != null) {
         return (
-            <Card featuredTitle={task.name} image={{ uri: baseUrl + task.image }}>
+            <Card featuredTitle={task.name} image={{ uri: baseUrl + task.image }} featuredSubtitle={task.dueDate}>
                 <Text style={{ margin: 10 }}>{task.description}</Text>
                 <Icon raised reverse name={props.favorite ? 'heart' : 'heart-o'} type='font-awesome' color='#f50'
                     onPress={() => props.favorite ? console.log('Already favorite') : props.onPress()} />

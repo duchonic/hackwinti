@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, FlatList, Text } from 'react-native';
-import { Tile } from 'react-native-elements';
+import { Tile, ListItem } from 'react-native-elements';
 import {connect} from 'react-redux';
 import {baseUrl} from '../shared/baseUrl';
 import {Loading} from './LoadingComponent';
@@ -27,14 +27,18 @@ class Tasks extends React.Component {
         }
 
         const renderTask = ({ item, index }) => {
+            const dueDate = Date.parse(item.dueDate);
+            const now = new Date().getTime();
+            console.log('now:' + now);
+            console.log('dueDate:' + dueDate);
+
             return (
-                <Tile
+                <ListItem
+                    containerStyle={{backgroundColor: (now > dueDate ? 'red': 'green')}}
                     key={index}
                     title={item.name}
-                    caption={item.description}
-                    featured
+                    subtitle={item.description}
                     onPress={() => navigate('TaskDetails', {taskId: item.id})}
-                    imageSrc={{uri: baseUrl + item.image}}
                 />
             );
         };

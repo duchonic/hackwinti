@@ -5,14 +5,16 @@
       "name": "Prepare CV",
       "image": "images/dummy.png",
       "category": "job",
-      "description": "blabla"
+      "description": "blabla",
+      "dueDate": "2019-10-21T16:27:12Z"
     },
     {
       "id": 1,
       "name": "File taxes",
       "image": "images/dummy.png",
       "category": "admin",
-      "description": "blabla"
+      "description": "blabla",
+      "dueDate": "2019-03-30T16:27:12Z"
     }
   ],
   "comments": [
