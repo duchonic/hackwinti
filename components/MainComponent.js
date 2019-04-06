@@ -198,7 +198,7 @@ const MainNavigator = createDrawerNavigator({
       title: 'Appointment',
       drawerLabel: 'Appointment',
       drawerIcon: ({ tintColor, focused }) => (
-        <Icon name='home' type='font-awesome' size={24} color={tintColor} />
+        <Icon name='calendar' type='font-awesome' size={24} color={tintColor} />
       )
     }
   },

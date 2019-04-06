@@ -78,17 +78,48 @@
   "appointments":[
     {
       "id": 0,
-      "title": "Appointment with Company XY",
+      "title": "Appointment with company X28",
       "date": "2019-01-21T16:27:12Z",
       "location": "Technoparkstrasse 2",
-      "preReminder": "10min"
+      "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et elit nec ante tempus consequat ut at turpis. Mauris nec metus nisi. Nam id eros hendrerit, aliquet turpis eget, pellentesque tortor. In condimentum ante nunc, et placerat erat sollicitudin vitae. Vestibulum et facilisis nisi, sit amet consequat orci. Fusce velit enim, iaculis mollis congue sit amet, fermentum nec leo. Sed finibus sagittis dolor, eget egestas diam imperdiet at. Mauris laoreet, ante id placerat rutrum, sapien augue dignissim ex, nec varius nisi ipsum et leo. Aenean mollis quam quis orci porttitor, eget aliquam ante commodo. Nulla vestibulum sem a accumsan porttitor. Morbi ut pellentesque neque.",
+      "preReminder": "10min",
+      "scope": "public",
+      "duration": "1h",
+      "participants":["Cris Peter","Chuck Norris","Bruce Lee"],
+      "files":["cv.pdf","job-description.pdf","certificates.pdf","letter-of-recomendation.pdf","working-permit.pdf"]
     },
     {
       "id": 1,
-      "title": "Appointment with social Help",
+      "title": "private appointment",
       "date": "2019-01-21T16:27:12Z",
       "location": "Technoparkstrasse 2",
-      "preReminder": "10min"
+      "description":"Nullam laoreet, erat non congue eleifend, massa metus cursus lacus, venenatis lobortis leo arcu quis risus. In tempus sed lorem id lobortis. Vestibulum varius viverra porttitor. Fusce malesuada dui quis mi semper faucibus. Phasellus feugiat lacinia varius. Suspendisse tempor egestas sem ut tristique. Suspendisse hendrerit congue tortor, quis interdum nisi viverra vitae. ",
+      "preReminder": "10min",
+      "scope": "private",
+      "participants":[],
+      "files":[]
+    },
+    {
+      "id": 2,
+      "title": "Appointment with company city of Winterthur",
+      "date": "2019-01-21T16:27:12Z",
+      "description":"Vestibulum venenatis sagittis pulvinar. Praesent molestie, massa vitae varius mollis, est elit varius metus, non rhoncus dolor tellus vitae orci. Praesent nunc elit, porta quis bibendum sed, tristique vel turpis. Ut laoreet elit non ex sagittis congue. Suspendisse eget pellentesque risus. Vestibulum sit amet viverra metus. Suspendisse at aliquet turpis, at vestibulum elit. Curabitur leo arcu, vehicula vitae dignissim id, auctor quis sem. Morbi ut libero cursus, placerat dui id, suscipit ipsum. Sed suscipit interdum nunc ac vehicula. Pellentesque elementum suscipit velit at sodales. Nam posuere nulla gravida mi luctus, quis auctor est mollis. Nullam at eleifend tortor, ullamcorper venenatis elit. Nullam lacus turpis, posuere nec lobortis et, egestas in mauris. Mauris vitae nunc ullamcorper, congue lectus eget, varius ex. ",
+      "location": "Technoparkstrasse 2",
+      "preReminder": "10min",
+      "scope": "public",
+      "participants":["Steve Jobs","Nicolas Tesla","Tim Berners-Lee"],
+      "files":["cv.pdf","job-description.pdf","certificates.pdf","letter-of-recomendation.pdf","working-permit.pdf"]
+    },
+    {
+      "id": 3,
+      "title": "private appointment",
+      "date": "2019-01-21T16:27:12Z",
+      "description":"In ligula nibh, gravida eu dolor at, feugiat ultrices leo. Integer nunc quam, volutpat in tellus vitae, laoreet pellentesque libero. Donec blandit pellentesque tellus convallis lobortis. Donec cursus elementum ex eget fringilla. Morbi porttitor dolor egestas, viverra arcu sed, laoreet tellus. In suscipit, sem nec sagittis aliquam, arcu tortor sodales nunc, sit amet varius enim ligula eget nulla. Aenean a facilisis turpis, sed rhoncus ipsum. Donec imperdiet viverra ipsum, in sodales eros mattis at. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur volutpat sagittis sollicitudin. Aliquam maximus lacus at justo mollis malesuada. Aliquam eu sagittis tortor. Nam non luctus dolor.",
+      "location": "Technoparkstrasse 2",
+      "preReminder": "10min",
+      "scope": "private",
+      "participants":[],
+      "files":[]
     }
   ]
 }
