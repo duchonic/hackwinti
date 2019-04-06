@@ -9,7 +9,6 @@ const msg = 'message';
 const hostname = '127.0.0.1';
 const port = 3000;
 
-
 const readline = require('readline');
 const rl = readline.createInterface({
   input: process.stdin,
@@ -80,4 +79,3 @@ const server = http.createServer((req, res) => {
 server.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
 });
-
