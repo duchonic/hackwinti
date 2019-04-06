@@ -28,10 +28,15 @@
   "messages": [
     {
       "id": 0,
-      "title": "",
-      "message": "",
+      "message": "Hello World",
       "author": "Social Worker B",
       "date": "2019-10-16T13:27:13Z"
+    },
+    {
+      "message": "Blabla",
+      "author": "Client A",
+      "date": "2019-04-06T11:44:17.114Z",
+      "id": 1
     }
   ]
 }

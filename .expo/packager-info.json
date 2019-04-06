@@ -2,8 +2,9 @@
   "devToolsPort": 19002,
   "expoServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 9116,
+  "packagerPid": 15373,
   "expoServerNgrokUrl": "https://y4-28k.anonymous.hackwinti.exp.direct",
   "packagerNgrokUrl": "https://packager.y4-28k.anonymous.hackwinti.exp.direct",
-  "ngrokPid": 9187
+  "ngrokPid": 15444,
+  "webpackServerPort": null
 }

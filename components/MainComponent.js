@@ -3,10 +3,11 @@ import { ScrollView, View, Platform, Image, StyleSheet, Text } from 'react-nativ
 import { createStackNavigator, createDrawerNavigator, DrawerItems, SafeAreaView } from 'react-navigation';
 import { Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
-import { fetchTasks, fetchComments } from '../redux/ActionCreators';
+import { fetchTasks, fetchComments, fetchMessages } from '../redux/ActionCreators';
 
 import Tasks from './TasksComponent';
 import Home from './HomeComponent';
+import Messages from './MessagesComponent';
 import TaskDetails from './TaskDetailsComponent';
 
 const mapStateToProps = state => {
@@ -18,7 +19,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchTasks: () => dispatch(fetchTasks()),
-    fetchComments: () => dispatch(fetchComments())
+    fetchComments: () => dispatch(fetchComments()),
+    fetchMessages: () => dispatch(fetchMessages())
   };
 }
 
@@ -33,6 +35,23 @@ const CustomDrawerContentComponent = (props) => (
       <DrawerItems {...props} />
     </SafeAreaView>
   </ScrollView>
+);
+
+const MessagesNavigator = createStackNavigator({
+  Messages: { screen: Messages }
+},
+  {
+    navigationOptions: ({ navigation }) => ({
+      headerStyle: {
+        backgroundColor: '#512DA8'
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        color: '#fff'
+      },
+      headerLeft: <Icon name='menu' size={24} color='white' onPress={() => navigation.toggleDrawer()} />
+    })
+  }
 );
 
 const HomeNavigator = createStackNavigator({
@@ -76,6 +95,16 @@ const TasksNavigator = createStackNavigator({
 );
 
 const MainNavigator = createDrawerNavigator({
+  Messages: {
+    screen: MessagesNavigator,
+    navigationOptions: {
+      title: 'Messages',
+      drawerLabel: 'Messages',
+      drawerIcon: ({ tintColor, focused }) => (
+        <Icon name='list' type='font-awesome' size={24} color={tintColor} />
+      )
+    }
+  },
   Home: {
     screen: HomeNavigator,
     navigationOptions: {
@@ -108,6 +137,7 @@ class Main extends Component {
   componentDidMount() {
     this.props.fetchTasks();
     this.props.fetchComments();
+    this.props.fetchMessages();
   }
 
   render() {

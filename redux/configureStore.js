@@ -4,13 +4,15 @@ import logger from 'redux-logger';
 import { tasks } from './tasks';
 import { comments } from './comments';
 import { favorites } from './favorites';
+import { messages } from './messages';
 
 export const ConfigureStore = () => {
     const store = createStore(
         combineReducers({
             tasks,
             comments,
-            favorites
+            favorites,
+            messages
         }),
         applyMiddleware(thunk, logger)
     );
