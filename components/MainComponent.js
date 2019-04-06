@@ -13,7 +13,6 @@ import Rewards from './RewardsComponent';
 
 import Home from './HomeComponent';
 import Messages from './MessagesComponent';
->>>>>>> 065ca928e519f8d7d4f8044b54eab0ff1c1d326b
 import TaskDetails from './TaskDetailsComponent';
 import RewardDetails from './RewardDetailsComponent';
 
@@ -28,7 +27,7 @@ const mapDispatchToProps = dispatch => {
   return {
     fetchTasks: () => dispatch(fetchTasks()),
     fetchComments: () => dispatch(fetchComments()),
-    fetchRewards: () => dispatch(fetchRewards())
+    fetchRewards: () => dispatch(fetchRewards()),
     fetchMessages: () => dispatch(fetchMessages())
   };
 }
