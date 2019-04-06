@@ -3,7 +3,7 @@ import { ScrollView, View, Platform, Image, StyleSheet, Text } from 'react-nativ
 import { createStackNavigator, createDrawerNavigator, DrawerItems, SafeAreaView } from 'react-navigation';
 import { Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
-import { fetchTasks } from '../redux/ActionCreators';
+import { fetchTasks, fetchComments } from '../redux/ActionCreators';
 
 import Tasks from './TasksComponent';
 import Home from './HomeComponent';
@@ -17,7 +17,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchTasks: () => dispatch(fetchTasks())
+    fetchTasks: () => dispatch(fetchTasks()),
+    fetchComments: () => dispatch(fetchComments())
   };
 }
 
@@ -25,11 +26,8 @@ const CustomDrawerContentComponent = (props) => (
   <ScrollView>
     <SafeAreaView style={styles.container} forceInset={{ top: 'always', horizontal: 'never' }}>
       <View style={styles.drawerHeader}>
-        <View style={{ flex: 1 }}>
+        <View style={{ flex: 3 }}>
           <Image source={require('./images/logo.png')} style={styles.drawerImage} />
-        </View>
-        <View style={{ flex: 2 }}>
-          <Text style={styles.drawerHeaderText}>Winti Hack</Text>
         </View>
       </View>
       <DrawerItems {...props} />
@@ -55,10 +53,10 @@ const HomeNavigator = createStackNavigator({
 );
 
 const TasksNavigator = createStackNavigator({
-  Menu: {
+  Tasks: {
     screen: Tasks,
     navigationOptions: ({ navigation }) => ({
-      headerLeft: <Icon name='menu' size={24} color='white' onPress={() => navigation.toggleDrawer()} />
+      headerLeft: <Icon name='tasks' size={24} color='white' onPress={() => navigation.toggleDrawer()} />
     })
   },
   TaskDetails: { screen: TaskDetails }
@@ -141,7 +139,7 @@ const styles = StyleSheet.create({
   },
   drawerImage: {
     margin: 10,
-    width: 80,
+    //width: 80,
     height: 60
   }
 });
