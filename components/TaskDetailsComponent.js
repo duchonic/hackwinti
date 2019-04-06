@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, View, ScrollView, FlatList } from 'react-native';
 import { connect } from 'react-redux';
 import { baseUrl } from '../shared/baseUrl';
-import { Card, Icon } from 'react-native-elements';
+import { Card, Icon, Rating } from 'react-native-elements';
 import { postTaskCompleted } from '../redux/ActionCreators';
 
 const mapStateToProps = state => {
@@ -13,11 +13,9 @@ const mapStateToProps = state => {
     }
 };
 
-const mapDispatchToProps = dispatch => {
-    return {
-        postTaskCompleted: taskId => dispatch(postTaskCompleted(taskId))
-    }
-};
+const mapDispatchToProps = dispatch => ({
+        postTaskCompleted: task => dispatch(postTaskCompleted(task))
+});
 
 function RenderComments(props) {
     const comments = props.comments;
@@ -25,8 +23,8 @@ function RenderComments(props) {
         return (
             <View key={index} style={{ margin: 10 }}>
                 <Text style={{ fontSize: 14 }}>{item.comment}</Text>
-                <Text style={{ fontSize: 12 }}>{item.rating}</Text>
-                <Text style={{ fontSize: 12 }}>{'-- ' + item.author + ', ' + item.date}</Text>
+                <Rating readonly startingValue={+item.rating} imageSize={16}/>
+                <Text style={{ fontSize: 12 }}>{'-- ' + item.author + ', ' + new Date(Date.parse(item.date)).toLocaleString("de")}</Text>
             </View>
         );
     };
@@ -41,10 +39,10 @@ function RenderTask(props) {
 
     if (task != null) {
         return (
-            <Card featuredTitle={task.name} image={{ uri: baseUrl + task.image }} featuredSubtitle={task.dueDate}>
+            <Card featuredTitle={task.name} image={{ uri: baseUrl + task.image }} featuredSubtitle={new Date(Date.parse(task.dueDate)).toLocaleString("de")}>
                 <Text style={{ margin: 10 }}>{task.description}</Text>
-                <Icon raised reverse name={props.favorite ? 'heart' : 'heart-o'} type='font-awesome' color='#f50'
-                    onPress={() => props.favorite ? console.log('Already favorite') : props.onPress()} />
+                <Icon raised reverse name={props.favorite ? 'thumbs-up' : 'thumbs-up'} type='font-awesome' color='#f50'
+                    onPress={() => props.success()} />
             </Card>
         );
     } else {
@@ -58,15 +56,18 @@ class TaskDetails extends React.Component {
         title: 'Task Details'
     };
 
-    markFavorite(taskId) {
-        this.props.postTaskCompleted(taskId);
+    taskSuccess(task) {
+        this.props.postTaskCompleted(task);
+        const { navigate } = this.props.navigation;
+        navigate('Tasks');
     }
 
     render() {
         const taskId = this.props.navigation.getParam('taskId', '');
+        const task = this.props.tasks.tasks[+taskId];
         return (
             <ScrollView>
-                <RenderTask task={this.props.tasks.tasks[+taskId]} favorite={this.props.favorites.some(el => el === taskId)} onPress={() => this.markFavorite(taskId)} />
+                <RenderTask task={task} success={() => this.taskSuccess(task)} />
                 <RenderComments comments={this.props.comments.comments.filter(comment => comment.taskId === taskId)} />
             </ScrollView>
         );

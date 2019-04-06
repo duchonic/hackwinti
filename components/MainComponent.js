@@ -40,7 +40,7 @@ const CustomDrawerContentComponent = (props) => (
     <SafeAreaView style={styles.container} forceInset={{ top: 'always', horizontal: 'never' }}>
       <View style={styles.drawerHeader}>
         <View style={{ flex: 3 }}>
-          <Image source={require('./images/logo.png')} style={styles.drawerImage} />
+          <Image source={require('./images/logoWinti.png')} style={styles.drawerImage} />
         </View>
       </View>
       <DrawerItems {...props} />

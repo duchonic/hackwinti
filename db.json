@@ -1,20 +1,25 @@
 {
   "tasks": [
     {
-      "id": 0,
-      "name": "Prepare CV",
-      "image": "images/dummy.png",
-      "category": "job",
-      "description": "blabla",
-      "dueDate": "2019-10-21T16:27:12Z"
+      "name": "Prepare your CV",
+      "category": "list",
+      "description": "Please get your CV ready for the upcoming job applications",
+      "dueDate": "2019-10-21T16:27:12Z",
+      "id": 0
     },
     {
-      "id": 1,
-      "name": "File taxes",
-      "image": "images/dummy.png",
-      "category": "admin",
-      "description": "blabla",
-      "dueDate": "2019-03-30T16:27:12Z"
+      "name": "File taxes for the year 2018",
+      "category": "gear",
+      "description": "Please prepare all your tax documents.",
+      "dueDate": "2019-03-01T16:27:12Z",
+      "id": 1
+    },
+    {
+      "name": "Apply for tax deadline extension",
+      "category": "gear",
+      "description": "There are only 3 days left for your tax filing. Please apply for a deadline extension.",
+      "dueDate": "2019-03-27T16:27:12Z",
+      "id": 2
     }
   ],
   "rewards": [
@@ -37,45 +42,55 @@
     {
       "id": 0,
       "taskId": 0,
+      "rating": 3,
+      "comment": "Please review the education section in your CV. It is missing your high school grades.",
+      "author": "Hugo B.",
+      "date": "2019-01-21T16:27:12Z"
+    },
+    {
+      "id": 1,
+      "taskId": 0,
       "rating": 5,
       "comment": "Well done",
-      "author": "Social Worker A",
+      "author": "Hugo B.",
+      "date": "2019-01-23T16:27:12Z"
+    },
+    {
+      "id": 2,
+      "taskId": 1,
+      "rating": 5,
+      "comment": "Well done",
+      "author": "Hugo B.",
       "date": "2019-01-21T16:27:12Z"
     }
   ],
   "messages": [
     {
       "id": 0,
-      "message": "Hello World",
-      "author": "Social Worker B",
+      "message": "Hello. I have tried calling you a few times during the last week. Please get in touch with me to discuss your next job interview on Tuesday.",
+      "author": "Hugo B",
       "date": "2019-10-16T13:27:13Z"
     },
     {
-      "message": "Blabla",
-      "author": "Client A",
+      "message": "My cat died and I was busy.",
+      "author": "Harry H.",
       "date": "2019-04-06T11:44:17.114Z",
       "id": 1
     },
     {
-      "message": "Goodbye world",
-      "author": "Client A",
+      "message": "OK. Let me know if you want to talk about it.",
+      "author": "Hugo B.",
       "date": "2019-04-06T12:01:59.629Z",
       "id": 2
     },
     {
-      "message": "Blubber",
-      "author": "Client A",
+      "message": "No thanks",
+      "author": "Harry H.",
       "date": "2019-04-06T12:04:36.925Z",
       "id": 3
-    },
-    {
-      "message": "Please review your CV",
-      "author": "Social Worker B",
-      "date": "2019-04-06T13:04:36.925Z",
-      "id": 4
     }
   ],
-  "appointments":[
+  "appointments": [
     {
       "id": 0,
       "title": "Appointment with Company XY",
@@ -85,7 +100,7 @@
     },
     {
       "id": 1,
-      "title": "Appointment with social Help",
+      "title": "Appointment with Social Services",
       "date": "2019-01-21T16:27:12Z",
       "location": "Technoparkstrasse 2",
       "preReminder": "10min"
