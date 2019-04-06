@@ -75,7 +75,7 @@ const TasksNavigator = createStackNavigator({
   Tasks: {
     screen: Tasks,
     navigationOptions: ({ navigation }) => ({
-      headerLeft: <Icon name='tasks' size={24} color='white' onPress={() => navigation.toggleDrawer()} />
+      headerLeft: <Icon name='menu' size={24} color='white' onPress={() => navigation.toggleDrawer()} />
     })
   },
   TaskDetails: { screen: TaskDetails }
@@ -101,7 +101,7 @@ const MainNavigator = createDrawerNavigator({
       title: 'Messages',
       drawerLabel: 'Messages',
       drawerIcon: ({ tintColor, focused }) => (
-        <Icon name='list' type='font-awesome' size={24} color={tintColor} />
+        <Icon name='comments' type='font-awesome' size={24} color={tintColor} />
       )
     }
   },
@@ -115,7 +115,7 @@ const MainNavigator = createDrawerNavigator({
       )
     }
   },
-  Menu: {
+  Tasks: {
     screen: TasksNavigator,
     navigationOptions: {
       title: 'Tasks',

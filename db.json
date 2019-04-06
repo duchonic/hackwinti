@@ -37,6 +37,24 @@
       "author": "Client A",
       "date": "2019-04-06T11:44:17.114Z",
       "id": 1
+    },
+    {
+      "message": "Goodbye world",
+      "author": "Client A",
+      "date": "2019-04-06T12:01:59.629Z",
+      "id": 2
+    },
+    {
+      "message": "Blubber",
+      "author": "Client A",
+      "date": "2019-04-06T12:04:36.925Z",
+      "id": 3
+    },
+    {
+      "message": "Please review your CV",
+      "author": "Social Worker B",
+      "date": "2019-04-06T13:04:36.925Z",
+      "id": 4
     }
   ]
 }

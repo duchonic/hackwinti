@@ -23,12 +23,17 @@ class Messages extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            messageText: 'Blabla'
+            messageText: ''
         };
     }
     static navigationOptions = {
         title: 'Messages'
     };
+
+    handlePost() {
+        this.setState({message: ''});
+        this.props.postMessage(this.state.messageText);
+    }
 
     render() {
         const renderMessage = ({ item, index }) => {
@@ -47,7 +52,7 @@ class Messages extends React.Component {
                         onChangeText={(messageText) => this.setState({messageText})}
                         value={this.state.messageText}
                     />
-                    <Button style={styles.formLabel} title='Send' onPress={() => this.props.postMessage(this.state.messageText)}/>
+                    <Button style={styles.formLabel} title='Send' onPress={() => this.handlePost()}/>
                 </View>
                 <FlatList
                     data={this.props.messages.messages}
@@ -72,7 +77,9 @@ const styles = StyleSheet.create({
         flex: 2
     },
     formItem: {
-        flex: 1
+        flex: 1,
+        borderColor: 'gray', 
+        borderWidth: 1
     }
 });
 
