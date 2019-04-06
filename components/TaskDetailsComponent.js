@@ -7,7 +7,9 @@ import { postTaskCompleted } from '../redux/ActionCreators';
 
 const mapStateToProps = state => {
     return {
-        tasks: state.tasks
+        tasks: state.tasks,
+        comments: state.comments,
+        favorites: state.favorites
     }
 };
 
