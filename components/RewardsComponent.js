@@ -1,6 +1,6 @@
 import React from 'react';
-import { View, ScrollView, StyleSheet, Button, Badge, FlatList, Text } from 'react-native';
-import { Tile, ListItem } from 'react-native-elements';
+import { View, ScrollView, StyleSheet, Badge, FlatList, Text } from 'react-native';
+import { Tile, ListItem, Button } from 'react-native-elements';
 import {connect} from 'react-redux';
 import {baseUrl} from '../shared/baseUrl';
 import {Loading} from './LoadingComponent';
@@ -87,41 +87,45 @@ class Rewards extends React.Component {
       };
 
       return (
-          <ScrollView>
-              <View style={styles.formRow}>
-                  <FlatList
-                      data={this.props.rewards.rewards}
-                      renderItem={renderRewards}
-                      keyExtractor={item => item.id.toString()}
-                  />
-              </View>
-              <View>
-                    <Text style = {{fontSize: 20, color: '#000'}}> performance: { parseFloat((this.state.performance * 100).toFixed(3))} %</Text>{
-                        ( Platform.OS === 'android' )
-                        ?
-                          ( <ProgressBarAndroid styleAttr = "Horizontal" progress = { this.state.performance } indeterminate = { false } /> )
-                        :
-                          ( <ProgressViewIOS progress = { this.state.performance } /> )
-                    }
-              </View>
-              <View>
-                    <Text style = {{fontSize: 20, color: '#000'}}> taskperweek: { parseFloat((this.state.taskperweek * 100).toFixed(3))} %</Text>{
-                        ( Platform.OS === 'android' )
-                        ?
-                          ( <ProgressBarAndroid styleAttr = "Horizontal" progress = { this.state.taskperweek } indeterminate = { false } /> )
-                        :
-                          ( <ProgressViewIOS progress = { this.state.taskperweek } /> )
-                    }
-              </View>
-              <View style={styles.formRow}>
-                  <Button onPress={() => this.handleEventMissed()}
-                      title='Missed Event' color='#512DA8' />
-              </View>
-              <View style={styles.formRow}>
-                  <Button onPress={() => this.handleTaskDone()}
-                      title='Task done' color='#512DA8' />
-              </View>
-          </ScrollView>
+        <ScrollView>
+            <View style={styles.formRow}>
+                <FlatList
+                    data={this.props.rewards.rewards}
+                    renderItem={renderRewards}
+                    keyExtractor={item => item.id.toString()}
+                />
+            </View>
+            <View>
+              <Text style = {{fontSize: 20, color: '#000'}}> performance: { parseFloat((this.state.performance * 100).toFixed(3))} %</Text>{
+                  ( Platform.OS === 'android' )
+                  ?
+                    ( <ProgressBarAndroid styleAttr = "Horizontal" progress = { this.state.performance } indeterminate = { false } /> )
+                  :
+                    ( <ProgressViewIOS progress = { this.state.performance } /> )
+              }
+            </View>
+            <View>
+              <Text style = {{fontSize: 20, color: '#000'}}> taskperweek: { parseFloat((this.state.taskperweek * 100).toFixed(3))} %</Text>{
+                  ( Platform.OS === 'android' )
+                  ?
+                    ( <ProgressBarAndroid styleAttr = "Horizontal" progress = { this.state.taskperweek } indeterminate = { false } /> )
+                  :
+                    ( <ProgressViewIOS progress = { this.state.taskperweek } /> )
+              }
+            </View>
+            <View style={styles.formRow}>
+                <Button onPress={() => this.handleEventMissed()}
+                    title='Missed Event'
+                    color='#512DA8'
+                    style={styles.button} />
+            </View>
+            <View style={styles.formRow}>
+                <Button onPress={() => this.handleTaskDone()}
+                    title='Task done'
+                    color='#512DA8'
+                    style={styles.button} />
+            </View>
+        </ScrollView>
       );
   }
 }
@@ -137,12 +141,8 @@ const styles = StyleSheet.create({
   },
 
   button: {
-  width: '100%',
-  backgroundColor: '#00BCD4',
-  borderRadius:5,
-  padding: 10,
-  marginTop: 10,
-
+    fontSize: 18,
+    flex: 2
   },
 
   TextStyle:{

@@ -1,8 +1,8 @@
 {
   "expoServerPort": null,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null,
+  "expoServerNgrokUrl": "https://nu-edf.anonymous.hackwinti.exp.direct",
+  "packagerNgrokUrl": "https://packager.nu-edf.anonymous.hackwinti.exp.direct",
+  "ngrokPid": 13208,
   "devToolsPort": 19002,
   "packagerPort": null,
   "packagerPid": null
