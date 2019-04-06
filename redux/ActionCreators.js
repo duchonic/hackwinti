@@ -1,5 +1,6 @@
 import * as ActionTypes from './ActionTypes';
 import { baseUrl } from '../shared/baseUrl';
+import { appointments } from './appointments';
 
 export const fetchComments = () => dispatch => {
     return fetch(baseUrl + 'comments')
@@ -169,4 +170,26 @@ export const addMessages = messages => ({
 export const addMessage = message => ({
     type: ActionTypes.ADD_MESSAGE,
     payload: message
+});
+export const fetchAppointments = () => dispatch => {
+    return fetch(baseUrl + 'appointments')
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                var error = new Error('Error' + response.status + ": " + response.statusText);
+                error.response = response;
+                throw error;
+            }
+        },
+            error => {
+                var errorMsg = new Error(error.errorMsg);
+                throw errorMsg;
+            })
+        .then(data => dispatch(addAppointments(data)))
+        .catch(error => console.log(error.message));
+}
+export const addAppointments = appointments => ({
+    type: ActionTypes.ADD_APPOINTMENTS,
+    payload: appointments
 });

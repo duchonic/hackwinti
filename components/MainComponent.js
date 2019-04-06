@@ -3,7 +3,7 @@ import { ScrollView, View, Platform, Image, StyleSheet, Text } from 'react-nativ
 import { createStackNavigator, createDrawerNavigator, DrawerItems, SafeAreaView } from 'react-navigation';
 import { Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
-import { fetchTasks, fetchComments, fetchMessages } from '../redux/ActionCreators';
+import { fetchTasks, fetchComments, fetchMessages, fetchAppointments } from '../redux/ActionCreators';
 
 // rewards stuff
 import { fetchRewards } from '../redux/ActionCreators';
@@ -105,17 +105,17 @@ const TasksNavigator = createStackNavigator({
   }
 );
 
-const AppointmentNavigator = createStackNavigator({
+const AppointmentsNavigator = createStackNavigator({
   Appointments: {
     screen: Appointments,
     navigationOptions: ({ navigation }) => ({
-      headerLeft: <Icon name='tasks' size={24} color='white' onPress={() => navigation.toggleDrawer()} />
+      headerLeft: <Icon name='menu' size={24} color='white' onPress={() => navigation.toggleDrawer()} />
     })
   },
   AppointmentDetails: { screen: AppointmentDetails }
 },
   {
-    initialRouteName: 'Appointment',
+    initialRouteName: 'Appointments',
     navigationOptions: ({ navigation }) => ({
       headerStyle: {
         backgroundColor: '#512DA8'
@@ -180,7 +180,9 @@ const MainNavigator = createDrawerNavigator({
       drawerIcon: ({ tintColor, focused }) => (
         <Icon name='list' type='font-awesome' size={24} color={tintColor} />
       )
-    },
+    }
+  },
+  Rewards: {
     screen: RewardsNavigator,
     navigationOptions: {
       title: 'Rewards',
@@ -189,7 +191,17 @@ const MainNavigator = createDrawerNavigator({
         <Icon name='trophy' type='font-awesome' size={24} color={tintColor} />
       )
     }
-  }
+  },
+  Appointments: {
+    screen: AppointmentsNavigator,
+    navigationOptions: {
+      title: 'Appointment',
+      drawerLabel: 'Appointment',
+      drawerIcon: ({ tintColor, focused }) => (
+        <Icon name='home' type='font-awesome' size={24} color={tintColor} />
+      )
+    }
+  },
 },
   {
     drawerBackgroundColor: '#D1C4E9',
@@ -204,6 +216,7 @@ class Main extends Component {
     this.props.fetchComments();
     this.props.fetchRewards();
     this.props.fetchMessages();
+    this.props.fetchAppointments();
   }
 
   render() {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, FlatList, Text } from 'react-native';
-import { Tile } from 'react-native-elements';
+import { Tile, ListItem } from 'react-native-elements';
 import {connect} from 'react-redux';
 import {baseUrl} from '../shared/baseUrl';
 import {Loading} from './LoadingComponent';
@@ -28,13 +28,11 @@ class Appointments extends React.Component {
 
         const renderAppointment = ({ item, index }) => {
             return (
-                <Tile
+                <ListItem
                     key={index}
-                    title={item.name}
-                    caption={item.description}
-                    featured
+                    title={item.title}
+                    subtitle={item.location}
                     onPress={() => navigate('ApponmentDetails', {appointmentId: item.id})}
-                    imageSrc={{uri: baseUrl + item.image}}
                 />
             );
         };
