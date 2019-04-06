@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, FlatList, Text } from 'react-native';
-import { Tile, ListItem } from 'react-native-elements';
+import { Tile, ListItem, Button } from 'react-native-elements';
 import {connect} from 'react-redux';
 import {baseUrl} from '../shared/baseUrl';
 import {Loading} from './LoadingComponent';
@@ -28,21 +28,26 @@ class Appointments extends React.Component {
 
         const renderAppointment = ({ item, index }) => {
             return (
-                <ListItem
+                <ListItem 
+                    containerStyle={{backgroundColor: (item.scope !='private' ? 'white': 'lightgrey')}}
                     key={index}
                     title={item.title}
-                    subtitle={item.location}
-                    onPress={() => navigate('ApponmentDetails', {appointmentId: item.id})}
+                    subtitle={<View><Text>{new Date(item.date).toLocaleTimeString('de-CH')}<Text> </Text>{new Date(item.date).toLocaleDateString('de-CH-u-co-phonebk')}</Text><Text>{item.location}</Text></View>}
+                    onPress={() => navigate('AppointmentDetails', {appointmentId: item.id})}
                 />
             );
         };
 
         return (
-            <FlatList
+            <View><FlatList
                 data={this.props.appointments.appointments}
                 renderItem={renderAppointment}
                 keyExtractor={item => item.id.toString()}
-            />
+            /><Button
+                onPress={() => {return null}}
+                title="add Appointment"
+                color = "#841584"
+            /></View>
         );
     }
 }
