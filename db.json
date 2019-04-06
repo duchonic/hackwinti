@@ -1,0 +1,28 @@
+{
+  "tasks": [
+    {
+      "id": 0,
+      "name": "Prepare CV",
+      "image": "images/dummy.png",
+      "category": "job",
+      "description": "blabla"
+    },
+    {
+      "id": 1,
+      "name": "File taxes",
+      "image": "images/dummy.png",
+      "category": "admin",
+      "description": "blabla"
+    }
+  ],
+  "comments": [
+    {
+      "id": 0,
+      "taskId": 0,
+      "rating": 5,
+      "comment": "Well done",
+      "author": "Social Worker A",
+      "date": "2012-10-16T17:57:28.556094Z"
+    }
+  ]
+}

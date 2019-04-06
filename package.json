@@ -1,0 +1,29 @@
+{
+  "main": "node_modules/expo/AppEntry.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "eject": "expo eject",
+    "startJsonServer": "json-server --watch db.json --port 3001 --delay 2000 --host 192.168.254.214 --static ./components",
+    "startDevTools": "react-devtools"
+  },
+  "dependencies": {
+    "expo": "^32.0.0",
+    "react": "16.5.0",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
+    "react-native-datepicker": "^1.7.2",
+    "react-native-elements": "^1.0.0-beta8",
+    "react-navigation": "2.0.1",
+    "react-redux": "^5.0.7",
+    "redux": "^4.0.0",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.2.0"
+  },
+  "devDependencies": {
+    "babel-preset-expo": "^5.0.0",
+    "json-server": "^0.14.2",
+    "react-devtools": "^3.2.3"
+  },
+  "private": true
+}
