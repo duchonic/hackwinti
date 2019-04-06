@@ -1,5 +1,6 @@
 IDE:
 * install visual code
+* install nodejs
 package manager:
 * sudo npm -g install expo-cli
 npm project dependencies, call from project folder
