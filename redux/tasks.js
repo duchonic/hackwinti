@@ -12,6 +12,8 @@ export const tasks = (state = {
             return {...state, isLoading: true, errMsg: null, tasks: []};
         case ActionTypes.TASKS_FAILED:
             return {...state, isLoading: false, errMsg: action.payload, tasks: []};
+        case ActionTypes.REMOVE_TASK:
+            return {...state, tasks: state.tasks.filter( task => task.id != action.payload.id)};
         default:
             return state;
     }

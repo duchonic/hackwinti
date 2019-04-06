@@ -1,9 +1,10 @@
 import React from 'react';
 import { View, FlatList, Text } from 'react-native';
-import { Tile, ListItem } from 'react-native-elements';
+import { Tile, ListItem, Icon } from 'react-native-elements';
 import {connect} from 'react-redux';
 import {baseUrl} from '../shared/baseUrl';
 import {Loading} from './LoadingComponent';
+import { Calendar, Permissions} from 'expo';
 
 const mapStateToProps = state => {
     return {
@@ -17,6 +18,17 @@ class Tasks extends React.Component {
         title: 'Tasks'
     };
 
+    componentDidMount() {
+        Permissions.askAsync(Permissions.CALENDAR).then(data => {
+            if (data.status == 'granted') {
+                const calendars = Calendar.getCalendarsAsync();
+                calendars.then((data) => console.log(data))
+                    .catch(error => console.log(error));
+                console.log(calendars);
+            }
+        });
+    }
+
     render() {
         const { navigate } = this.props.navigation;
 
@@ -29,23 +41,24 @@ class Tasks extends React.Component {
         const renderTask = ({ item, index }) => {
             const dueDate = Date.parse(item.dueDate);
             const now = new Date().getTime();
-            console.log('now:' + now);
-            console.log('dueDate:' + dueDate);
 
             return (
                 <ListItem
-                    containerStyle={{backgroundColor: (now > dueDate ? 'red': 'green')}}
                     key={index}
+                    subtitle={'Due: ' + new Date(Date.parse(item.dueDate)).toLocaleString("de") + '\nDays left: ' + Math.round((dueDate - now)/24/3600000)}
                     title={item.name}
-                    subtitle={item.description}
                     onPress={() => navigate('TaskDetails', {taskId: item.id})}
+                    leftIcon={<Icon name={item.category} type='font-awesome' size={30}/>}
+                    rightIcon={<Icon name={now > dueDate ? 'frown-o' : 'smile-o' } type='font-awesome' color={(now > dueDate ? 'red': 'green')} size={40}/>}
+                    bottomDivider
+                    topDivider
                 />
             );
         };
 
         return (
             <FlatList
-                data={this.props.tasks.tasks}
+                data={this.props.tasks.tasks.filter(task => !task.completed)}
                 renderItem={renderTask}
                 keyExtractor={item => item.id.toString()}
             />

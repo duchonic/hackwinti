@@ -67,6 +67,40 @@ export const addTasks = (tasks) => ({
     payload: tasks
 });
 
+export const postTaskCompleted = task => dispatch => {
+    return fetch(baseUrl + 'tasks/' + task.id, {
+        method: 'put',
+        headers: { 'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            name: task.name,
+            category: task.category,
+            description: task.description,
+            dueDate: task.dueDate,
+            completed: new Date().toISOString()
+        })
+    })
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                var error = new Error('Error ' + response.status + ': ' + response.statusText);
+                error.response = response;
+                throw error;
+            }
+        },
+            error => {
+                var errMsg = new Error(error.message);
+                throw errMsg;
+            })
+        .then(data => dispatch(removeTask(data)))
+        .catch(error => console.log(error.message));
+};
+
+export const removeTask = (task) => ({
+    type: ActionTypes.REMOVE_TASK,
+    payload: task
+});
+
 // here comes the reward stuff
 export const fetchRewards = () => (dispatch) => {
 

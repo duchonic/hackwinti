@@ -1,7 +1,7 @@
 export const TASKS_LOADING = 'TASKS_LOADING';
 export const ADD_TASKS = 'ADD_TASKS';
 export const TASKS_FAILED = 'TASKS_FAILED';
-
+export const REMOVE_TASK = 'REMOVE_TASK';
 
 // REWARDS
 export const REWARDS_LOADING = 'REWARDS_LOADING';

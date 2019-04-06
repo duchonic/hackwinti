@@ -41,7 +41,7 @@ class Messages extends React.Component {
             return (
                 <ListItem
                     key={index}
-                    title={<View><Text>{item.author}</Text><Text>{item.date}</Text></View>}
+                    title={<View><Text>{item.author}</Text><Text>{new Date(Date.parse(item.date)).toLocaleString("de")}</Text></View>}
                     subtitle={item.message}
                 />
             );
@@ -81,7 +81,8 @@ const styles = StyleSheet.create({
     formItem: {
         flex: 1,
         borderColor: 'gray',
-        borderWidth: 1
+        borderWidth: 1,
+        marginRight: 10
     }
 });
 

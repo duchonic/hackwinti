@@ -18,6 +18,8 @@ import Appointments from './AppointmentsComponent';
 import AppointmentDetails from './AppointmentDetailsComponent';
 import RewardDetails from './RewardDetailsComponent';
 
+import BackEndManager from './BackEndManager';
+
 const mapStateToProps = state => {
   return {
     tasks: state.tasks,
@@ -40,7 +42,7 @@ const CustomDrawerContentComponent = (props) => (
     <SafeAreaView style={styles.container} forceInset={{ top: 'always', horizontal: 'never' }}>
       <View style={styles.drawerHeader}>
         <View style={{ flex: 3 }}>
-          <Image source={require('./images/logo.png')} style={styles.drawerImage} />
+          <Image source={require('./images/logoWinti.png')} style={styles.drawerImage} />
         </View>
       </View>
       <DrawerItems {...props} />
@@ -54,7 +56,7 @@ const MessagesNavigator = createStackNavigator({
   {
     navigationOptions: ({ navigation }) => ({
       headerStyle: {
-        backgroundColor: '#512DA8'
+        backgroundColor: '#3366cc'
       },
       headerTintColor: '#fff',
       headerTitleStyle: {
@@ -71,7 +73,7 @@ const HomeNavigator = createStackNavigator({
   {
     navigationOptions: ({ navigation }) => ({
       headerStyle: {
-        backgroundColor: '#512DA8'
+        backgroundColor: '#3366cc'
       },
       headerTintColor: '#fff',
       headerTitleStyle: {
@@ -95,7 +97,7 @@ const TasksNavigator = createStackNavigator({
     initialRouteName: 'Tasks',
     navigationOptions: ({ navigation }) => ({
       headerStyle: {
-        backgroundColor: '#512DA8'
+        backgroundColor: '#3366cc'
       },
       headerTintColor: '#fff',
       headerTitleStyle: {
@@ -118,7 +120,7 @@ const AppointmentsNavigator = createStackNavigator({
     initialRouteName: 'Appointments',
     navigationOptions: ({ navigation }) => ({
       headerStyle: {
-        backgroundColor: '#512DA8'
+        backgroundColor: '#3366cc'
       },
       headerTintColor: '#fff',
       headerTitleStyle: {
@@ -141,7 +143,7 @@ const RewardsNavigator = createStackNavigator({
     initialRouteName: 'Rewards',
     navigationOptions: ({ navigation }) => ({
       headerStyle: {
-        backgroundColor: '#512DA8'
+        backgroundColor: '#3366cc'
       },
       headerTintColor: '#fff',
       headerTitleStyle: {
@@ -152,16 +154,6 @@ const RewardsNavigator = createStackNavigator({
 );
 
 const MainNavigator = createDrawerNavigator({
-  Messages: {
-    screen: MessagesNavigator,
-    navigationOptions: {
-      title: 'Messages',
-      drawerLabel: 'Messages',
-      drawerIcon: ({ tintColor, focused }) => (
-        <Icon name='comments' type='font-awesome' size={24} color={tintColor} />
-      )
-    }
-  },
   Home: {
     screen: HomeNavigator,
     navigationOptions: {
@@ -169,6 +161,16 @@ const MainNavigator = createDrawerNavigator({
       drawerLabel: 'Home',
       drawerIcon: ({ tintColor, focused }) => (
         <Icon name='home' type='font-awesome' size={24} color={tintColor} />
+      )
+    }
+  },
+  Messages: {
+    screen: MessagesNavigator,
+    navigationOptions: {
+      title: 'Messages',
+      drawerLabel: 'Messages',
+      drawerIcon: ({ tintColor, focused }) => (
+        <Icon name='comments' type='font-awesome' size={24} color={tintColor} />
       )
     }
   },
@@ -204,11 +206,16 @@ const MainNavigator = createDrawerNavigator({
   },
 },
   {
-    drawerBackgroundColor: '#D1C4E9',
+    drawerBackgroundColor: '#fff',
     contentComponent: CustomDrawerContentComponent
   });
 
 
+// const mBackEnd = new BackEndManager();
+// console.log('type: ' + mBackEnd);
+// taskPerDay();
+// console.log('get: ' + taskPerDay());
+// console.log('get: ' + performance());
 
 class Main extends Component {
   componentDidMount() {
@@ -234,7 +241,7 @@ const styles = StyleSheet.create({
     flex: 1
   },
   drawerHeader: {
-    backgroundColor: '#512DA8',
+    backgroundColor: '#3366cc',
     height: 140,
     alignItems: 'center',
     justifyContent: 'center',
