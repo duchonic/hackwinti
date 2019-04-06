@@ -6,9 +6,14 @@ package manager:
 npm project dependencies, call from project folder
 * npm install
 within the project folder
-* npm start
+
 * sudo sysctl -w fs.inotify.max_user_watches=100000
 
+edit package.json line 8: adjust --host ip address to your computers ip address
+edit shared/baseUrl.js: insert the same ip address
+* npm run startJsonServer: will start a dummy server to serve json data
+
+* npm start
 
 
 With Expo tools, services, and React Native, 
