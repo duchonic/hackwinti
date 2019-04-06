@@ -1,3 +1,4 @@
 node_modules
 shared/baseUrl.js
 package.json
+.expo

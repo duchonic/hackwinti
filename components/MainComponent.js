@@ -154,16 +154,6 @@ const RewardsNavigator = createStackNavigator({
 );
 
 const MainNavigator = createDrawerNavigator({
-  Messages: {
-    screen: MessagesNavigator,
-    navigationOptions: {
-      title: 'Messages',
-      drawerLabel: 'Messages',
-      drawerIcon: ({ tintColor, focused }) => (
-        <Icon name='comments' type='font-awesome' size={24} color={tintColor} />
-      )
-    }
-  },
   Home: {
     screen: HomeNavigator,
     navigationOptions: {
@@ -171,6 +161,16 @@ const MainNavigator = createDrawerNavigator({
       drawerLabel: 'Home',
       drawerIcon: ({ tintColor, focused }) => (
         <Icon name='home' type='font-awesome' size={24} color={tintColor} />
+      )
+    }
+  },
+  Messages: {
+    screen: MessagesNavigator,
+    navigationOptions: {
+      title: 'Messages',
+      drawerLabel: 'Messages',
+      drawerIcon: ({ tintColor, focused }) => (
+        <Icon name='comments' type='font-awesome' size={24} color={tintColor} />
       )
     }
   },
@@ -200,7 +200,7 @@ const MainNavigator = createDrawerNavigator({
       title: 'Appointment',
       drawerLabel: 'Appointment',
       drawerIcon: ({ tintColor, focused }) => (
-        <Icon name='home' type='font-awesome' size={24} color={tintColor} />
+        <Icon name='calendar' type='font-awesome' size={24} color={tintColor} />
       )
     }
   },
