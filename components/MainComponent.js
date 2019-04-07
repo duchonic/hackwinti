@@ -106,6 +106,27 @@ const TasksNavigator = createStackNavigator({
     })
   }
 );
+const HelpNavigator = createStackNavigator({
+  Helps: {
+    screen: Help,
+    navigationOptions: ({ navigation }) => ({
+      headerLeft: <Icon name='menu' size={24} color='white' onPress={() => navigation.toggleDrawer()} />
+    })
+  }
+},
+  {
+    initialRouteName: 'Helps',
+    navigationOptions: ({ navigation }) => ({
+      headerStyle: {
+        backgroundColor: '#3366cc'
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        color: '#fff'
+      }
+    })
+  }
+);
 
 const AppointmentsNavigator = createStackNavigator({
   Appointments: {
@@ -201,6 +222,16 @@ const MainNavigator = createDrawerNavigator({
       drawerLabel: 'Appointment',
       drawerIcon: ({ tintColor, focused }) => (
         <Icon name='calendar' type='font-awesome' size={24} color={tintColor} />
+      )
+    }
+  },
+  Help: {
+    screen: HelpNavigator,
+    navigationOptions: {
+      title: 'Help',
+      drawerLabel: 'Help',
+      drawerIcon: ({ tintColor, focused }) => (
+        <Icon name='question' type='font-awesome' size={24} color={tintColor} />
       )
     }
   },
