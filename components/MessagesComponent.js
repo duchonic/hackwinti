@@ -32,8 +32,8 @@ class Messages extends React.Component {
     };
 
     handlePost() {
-        this.setState({message: ''});
         this.props.postMessage(this.state.messageText);
+        this.setState({messageText: ''});
     }
 
     render() {
