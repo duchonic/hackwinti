@@ -5,7 +5,6 @@ import { View, Text, ScrollView, StyleSheet, Image} from 'react-native';
 import { Card, Icon } from 'react-native-elements';
 import { Loading } from './LoadingComponent';
 import { Notifications } from 'expo';
-import { Speech } from 'expo';
 
 class Home extends React.Component {
 
@@ -14,14 +13,13 @@ class Home extends React.Component {
     };
 
     componentDidMount() {
-        Notifications.scheduleLocalNotificationAsync({ title: 'title', body: 'body' }, { time: new Date().getTime() + 3000 });
-        Speech.speak("well done", { language: 'en' });
+        Notifications.scheduleLocalNotificationAsync({ title: 'Job Interview tomorrow', body: '1. Go to bed early\n2. Set alarm\n3. Brush teeth' }, { time: new Date().getTime() + 3000 });
     }
 
     render() {
         return (
             <ScrollView>
-                <Image source={require('./images/logoWintiFull.png')}/>
+                <Image source={require('./images/homeScreen.png')}/>
                 <Text style={styles.body}>Social Services App</Text>
                 <Icon name='smile-o' type='font-awesome' size={280} color={'yellow'} />
             </ScrollView>
