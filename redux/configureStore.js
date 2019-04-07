@@ -7,17 +7,26 @@ import { comments } from './comments';
 import { favorites } from './favorites';
 import { messages } from './messages';
 import { appointments } from './appointments';
+import * as ActionTypes from './ActionTypes';
 
 export const ConfigureStore = () => {
+    const appReducers = combineReducers({
+        tasks,
+        rewards,
+        comments,
+        favorites,
+        messages,
+        appointments
+    });
+    const rootReducer = (state, action) => {
+        if (action.type === ActionTypes.CLEAR_ALL) {
+            state = undefined;
+        }
+
+        return appReducers(state, action);
+    }
     const store = createStore(
-        combineReducers({
-            tasks,
-            rewards,
-            comments,
-            favorites,
-            messages,
-            appointments
-        }),
+        rootReducer,
         applyMiddleware(thunk, logger)
     );
     return store;

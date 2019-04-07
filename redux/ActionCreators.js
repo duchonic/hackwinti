@@ -176,7 +176,7 @@ export const postMessage = messageText => dispatch => {
         headers: { 'Content-Type': 'application/json'},
         body: JSON.stringify({
             message: messageText,
-            author: 'Client A',
+            author: 'Harry H.',
             date: new Date().toISOString()
         })
     })
@@ -227,3 +227,7 @@ export const addAppointments = appointments => ({
     type: ActionTypes.ADD_APPOINTMENTS,
     payload: appointments
 });
+
+export const clearAll = () => dispatch => {
+    dispatch({type: ActionTypes.CLEAR_ALL});
+};

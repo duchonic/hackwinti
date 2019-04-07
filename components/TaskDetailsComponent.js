@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { baseUrl } from '../shared/baseUrl';
 import { Card, Icon, Rating } from 'react-native-elements';
 import { postTaskCompleted } from '../redux/ActionCreators';
+import { Speech } from 'expo';
 
 const mapStateToProps = state => {
     return {
@@ -57,6 +58,8 @@ class TaskDetails extends React.Component {
     };
 
     taskSuccess(task) {
+        Speech.speak("well done", { language: 'en' });
+
         this.props.postTaskCompleted(task);
         const { navigate } = this.props.navigation;
         navigate('Tasks');

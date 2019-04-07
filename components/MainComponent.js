@@ -3,7 +3,7 @@ import { ScrollView, View, Platform, Image, StyleSheet, Text } from 'react-nativ
 import { createStackNavigator, createDrawerNavigator, DrawerItems, SafeAreaView } from 'react-navigation';
 import { Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
-import { fetchTasks, fetchComments, fetchMessages, fetchAppointments } from '../redux/ActionCreators';
+import { fetchTasks, fetchComments, fetchMessages, fetchAppointments, clearAll } from '../redux/ActionCreators';
 
 // rewards stuff
 import { fetchRewards } from '../redux/ActionCreators';
@@ -33,7 +33,8 @@ const mapDispatchToProps = dispatch => {
     fetchComments: () => dispatch(fetchComments()),
     fetchAppointments: () => dispatch(fetchAppointments()),
     fetchRewards: () => dispatch(fetchRewards()),
-    fetchMessages: () => dispatch(fetchMessages())
+    fetchMessages: () => dispatch(fetchMessages()),
+    clearAll: () => dispatch(clearAll())
   };
 }
 
@@ -217,13 +218,20 @@ const MainNavigator = createDrawerNavigator({
 // console.log('get: ' + taskPerDay());
 // console.log('get: ' + performance());
 
+
 class Main extends Component {
   componentDidMount() {
-    this.props.fetchTasks();
-    this.props.fetchComments();
-    this.props.fetchRewards();
-    this.props.fetchMessages();
-    this.props.fetchAppointments();
+    this.loadData(this.props);
+    let timer = setInterval( () => this.loadData(this.props), 4000);
+  }
+
+  loadData(props) {
+    // props.clearAll();
+    props.fetchMessages();
+    props.fetchTasks();
+    props.fetchComments();
+    props.fetchRewards();
+    props.fetchAppointments();
   }
 
   render() {
