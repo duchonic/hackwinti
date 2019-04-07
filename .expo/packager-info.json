@@ -1,9 +1,9 @@
 {
-  "expoServerPort": null,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null,
+  "expoServerPort": 19000,
+  "expoServerNgrokUrl": "https://ph-2ar.anonymous.hackwinti.exp.direct",
+  "packagerNgrokUrl": "https://packager.ph-2ar.anonymous.hackwinti.exp.direct",
+  "ngrokPid": 6071,
   "devToolsPort": 19002,
-  "packagerPort": null,
-  "packagerPid": null
+  "packagerPort": 19001,
+  "packagerPid": 6054
 }

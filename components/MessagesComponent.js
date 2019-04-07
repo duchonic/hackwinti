@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {ScrollView, FlatList, StyleSheet, View, TextInput, Text} from 'react-native';
-import { Tile, Button, ListItem } from 'react-native-elements';
+import { Tile, Button, ListItem , Icon} from 'react-native-elements';
 import {connect} from 'react-redux';
 
 import {postMessage} from '../redux/ActionCreators';
@@ -43,6 +43,7 @@ class Messages extends React.Component {
                     key={index}
                     title={<View><Text>{item.author}</Text><Text>{new Date(Date.parse(item.date)).toLocaleString("de")}</Text></View>}
                     subtitle={item.message}
+                    rightIcon={<Icon name={item.author.startsWith('Harry') ? 'arrow-right' : 'arrow-left'} type='font-awesome' color={item.author.startsWith('Harry') ? 'red' : 'green'} size={16}/>}
                 />
             );
         };
