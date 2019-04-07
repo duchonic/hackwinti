@@ -17,6 +17,7 @@ import TaskDetails from './TaskDetailsComponent';
 import Appointments from './AppointmentsComponent';
 import AppointmentDetails from './AppointmentDetailsComponent';
 import RewardDetails from './RewardDetailsComponent';
+import Help from './HelpComponent';
 
 import BackEndManager from './BackEndManager';
 
@@ -108,7 +109,7 @@ const TasksNavigator = createStackNavigator({
   }
 );
 const HelpNavigator = createStackNavigator({
-  Helps: {
+  Help: {
     screen: Help,
     navigationOptions: ({ navigation }) => ({
       headerLeft: <Icon name='menu' size={24} color='white' onPress={() => navigation.toggleDrawer()} />
@@ -116,7 +117,7 @@ const HelpNavigator = createStackNavigator({
   }
 },
   {
-    initialRouteName: 'Helps',
+    initialRouteName: 'Help',
     navigationOptions: ({ navigation }) => ({
       headerStyle: {
         backgroundColor: '#3366cc'
