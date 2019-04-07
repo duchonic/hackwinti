@@ -18,7 +18,7 @@ class Rewards extends React.Component {
     super();
     this.state = {
       performance: 0.1,
-      taskperweek: 0.0,
+      taskpermonth: 0.0,
     }
   }
 
@@ -28,28 +28,27 @@ class Rewards extends React.Component {
 
   handleEventMissed() {
       console.log("missed one");
-      this.setState({performance: this.state.performance - 0.1})
-      if(this.state.performance < 0){
-        this.state.performance = 0.0;
+      if(this.state.performance > 0.05){
+        this.setState({performance: this.state.performance - 0.1})
       }
   }
 
   handleTaskDone() {
     console.log("done one");
-    if(this.state.performance < 1.0){
+    if(this.state.performance < 0.95){
       this.setState({performance: this.state.performance + 0.1})
     }
-    if(this.state.performance>1.0){
-      this.state.performance=1.0;
-    }
 
-    if(this.state.taskperweek < 1){
-      this.setState({taskperweek: this.state.taskperweek + 0.1})
-    }
-    if(this.state.taskperweek>1.0){
-      this.state.taskperweek=1.0;
+    if(this.state.taskpermonth < 0.95){
+      this.setState({taskpermonth: this.state.taskpermonth + 0.1})
     }
   }
+
+  handleNewMonth() {
+    console.log("done one");
+    this.setState({taskpermonth: 0})
+  }
+
 
   render() {
       const { navigate } = this.props.navigation;
@@ -65,22 +64,22 @@ class Rewards extends React.Component {
           if (item.id == 0){
             return (
               <ListItem
-                containerStyle={{backgroundColor:
-                    (item.value < 50 ? 'red': 'green')}}
-                key={index}
-                title={item.name + ' actual val: ' + (this.state.performance*100)}
-                subtitle={item.description}
+                // containerStyle={{backgroundColor:
+                //     (item.value < 50 ? 'red': 'green')}}
+                // key={index}
+                // title={item.name + ' actual val: ' + (this.state.performance*100)}
+                // subtitle={item.description}
               />
             );
           }
           else{
             return(
               <ListItem
-                containerStyle={{backgroundColor:
-                    (item.value < 50 ? 'red': 'green')}}
-                key={index}
-                title={item.name + ' actual val: ' + (this.state.taskperweek*100)}
-                subtitle={item.description}
+                // containerStyle={{backgroundColor:
+                //     (item.value < 50 ? 'red': 'green')}}
+                // key={index}
+                // title={item.name + ' actual val: ' + (this.state.taskpermonth*100)}
+                // subtitle={item.description}
               />
             );
           }
@@ -88,31 +87,34 @@ class Rewards extends React.Component {
 
       return (
         <ScrollView>
-            <View style={styles.formRow}>
-                <FlatList
-                    data={this.props.rewards.rewards}
-                    renderItem={renderRewards}
-                    keyExtractor={item => item.id.toString()}
-                />
-            </View>
             <View>
-              <Text style = {{fontSize: 20, color: '#000'}}> performance: { parseFloat((this.state.performance * 100).toFixed(3))} %</Text>{
+              <Text style = {{fontSize: 20, color: '#000'}}> performance:{ parseFloat((this.state.performance * 100).toFixed(3))} %</Text>{
                   ( Platform.OS === 'android' )
                   ?
-                    ( <ProgressBarAndroid styleAttr = "Horizontal" progress = { this.state.performance } indeterminate = { false } /> )
+                    ( <ProgressBarAndroid styleAttr = "Horizontal" progress =
+                        { this.state.performance } indeterminate = { false } /> )
                   :
                     ( <ProgressViewIOS progress = { this.state.performance } /> )
               }
             </View>
             <View>
-              <Text style = {{fontSize: 20, color: '#000'}}> taskperweek: { parseFloat((this.state.taskperweek * 100).toFixed(3))} %</Text>{
+              <Text style = {{fontSize: 20, color: '#000'}}> taskpermonth:
+                        { parseFloat((this.state.taskpermonth * 10).toFixed(3))} pcs.</Text>{
                   ( Platform.OS === 'android' )
                   ?
-                    ( <ProgressBarAndroid styleAttr = "Horizontal" progress = { this.state.taskperweek } indeterminate = { false } /> )
+                    ( <ProgressBarAndroid styleAttr = "Horizontal" progress =
+                      { this.state.taskpermonth } indeterminate = { false } /> )
                   :
-                    ( <ProgressViewIOS progress = { this.state.taskperweek } /> )
+                    ( <ProgressViewIOS progress = { this.state.taskpermonth } /> )
               }
             </View>
+            <View style={styles.formRow}>
+               <FlatList
+                   data={this.props.rewards.rewards}
+                   renderItem={renderRewards}
+                   keyExtractor={item => item.id.toString()}
+               />
+           </View>
             <View style={styles.formRow}>
                 <Button onPress={() => this.handleEventMissed()}
                     title='Missed Event'
@@ -122,6 +124,12 @@ class Rewards extends React.Component {
             <View style={styles.formRow}>
                 <Button onPress={() => this.handleTaskDone()}
                     title='Task done'
+                    color='#512DA8'
+                    style={styles.button} />
+            </View>
+            <View style={styles.formRow}>
+                <Button onPress={() => this.handleNewMonth()}
+                    title='New month'
                     color='#512DA8'
                     style={styles.button} />
             </View>
