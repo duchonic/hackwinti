@@ -17,6 +17,7 @@ import TaskDetails from './TaskDetailsComponent';
 import Appointments from './AppointmentsComponent';
 import AppointmentDetails from './AppointmentDetailsComponent';
 import RewardDetails from './RewardDetailsComponent';
+import Help from './HelpComponent';
 
 import BackEndManager from './BackEndManager';
 
@@ -96,6 +97,27 @@ const TasksNavigator = createStackNavigator({
 },
   {
     initialRouteName: 'Tasks',
+    navigationOptions: ({ navigation }) => ({
+      headerStyle: {
+        backgroundColor: '#3366cc'
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        color: '#fff'
+      }
+    })
+  }
+);
+const HelpNavigator = createStackNavigator({
+  Help: {
+    screen: Help,
+    navigationOptions: ({ navigation }) => ({
+      headerLeft: <Icon name='menu' size={24} color='white' onPress={() => navigation.toggleDrawer()} />
+    })
+  }
+},
+  {
+    initialRouteName: 'Help',
     navigationOptions: ({ navigation }) => ({
       headerStyle: {
         backgroundColor: '#3366cc'
@@ -202,6 +224,16 @@ const MainNavigator = createDrawerNavigator({
       drawerLabel: 'Appointment',
       drawerIcon: ({ tintColor, focused }) => (
         <Icon name='calendar' type='font-awesome' size={24} color={tintColor} />
+      )
+    }
+  },
+  Help: {
+    screen: HelpNavigator,
+    navigationOptions: {
+      title: 'Help',
+      drawerLabel: 'Help',
+      drawerIcon: ({ tintColor, focused }) => (
+        <Icon name='question' type='font-awesome' size={24} color={tintColor} />
       )
     }
   },
