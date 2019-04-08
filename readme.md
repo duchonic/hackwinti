@@ -36,3 +36,14 @@ With Expo tools, services, and React Native,
 you can build, deploy, and quickly iterate on
 native iOS and Android apps from the same
 JavaScript codebase.
+
+## other teams used
+
+* GitHub, Firebase, Dialogflow, VSCode, Intellij
+  * frameworks: Angular
+* botsociety, github, fluidUI
+* tools: JetBrains, google cloud platform, github
+  *  frameworks: react nativ, java, hibernate
+* tools: vscode, google cloud platform, github
+* react native (expo), github
+ 
